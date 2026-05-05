@@ -551,10 +551,54 @@
  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8854.712231790247!2d66.96683722615981!3d39.578902662462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4d1f05e479a46f%3A0x2f18a0fba128d395!2sMARJON!5e0!3m2!1sru!2s!4v1777984074824!5m2!1sru!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
           </section></div>
+	<section class="rsvp" style="text-align:center; padding:60px 20px;">
+  <h2>To‘yga kelasizmi?</h2>
+
+  <input type="text" id="name" placeholder="Ismingiz"
+    style="padding:12px; margin:10px; width:250px; border-radius:8px; border:1px solid #ccc;">
+  <br>
+  <select id="attendance"
+    style="padding:12px; margin:10px; width:270px; border-radius:8px;">
+    <option value="Kelaman">Kelaman</option>
+    <option value="Kela olmayman">Kela olmayman</option>
+  </select>
+  <br>
+  <button onclick="sendToTelegram()" class="btn">Yuborish</button>
+</section>
        <footer class="footer">
         <p>Abdulloshoh &amp; Zebo| 23 may 2026</p>
     </footer>
+function sendToTelegram() {
+  const name = document.getElementById("name").value;
+  const attendance = document.getElementById("attendance").value;
 
+  if (!name) {
+    alert("Iltimos, ismingizni kiriting");
+    return;
+  }
+
+  const token = "8728475122:AAG6QsnMVodAI_j0CVhhFpbMYOFfGWVtaqA";
+  const chat_id = "824823875";
+
+  const message = `📩 Yangi mehmon:\n👤 Ism: ${name}\n📍 Holati: ${attendance}`;
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: message
+    })
+  })
+  .then(() => {
+    alert("Rahmat! Javobingiz yuborildi ✅");
+  })
+  .catch(() => {
+    alert("Xatolik yuz berdi ❌");
+  });
+}
    <script>
   // Таймер
   function updateTimer() {
