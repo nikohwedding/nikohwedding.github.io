@@ -568,37 +568,7 @@
        <footer class="footer">
         <p>Abdulloshoh &amp; Zebo| 23 may 2026</p>
     </footer>
-function sendToTelegram() {
-  const name = document.getElementById("name").value;
-  const attendance = document.getElementById("attendance").value;
 
-  if (!name) {
-    alert("Iltimos, ismingizni kiriting");
-    return;
-  }
-
-  const token = "8728475122:AAG6QsnMVodAI_j0CVhhFpbMYOFfGWVtaqA";
-  const chat_id = "824823875";
-
-  const message = `📩 Yangi mehmon:\n👤 Ism: ${name}\n📍 Holati: ${attendance}`;
-
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      chat_id: chat_id,
-      text: message
-    })
-  })
-  .then(() => {
-    alert("Rahmat! Javobingiz yuborildi ✅");
-  })
-  .catch(() => {
-    alert("Xatolik yuz berdi ❌");
-  });
-}
    <script>
   // Таймер
   function updateTimer() {
@@ -647,6 +617,35 @@ function sendToTelegram() {
     }
     isPlaying = !isPlaying;
   });
+</script>
+	<script>
+function sendToTelegram() {
+  const name = document.getElementById("name").value;
+  const attendance = document.getElementById("attendance").value;
+
+  if (!name) {
+    alert("Iltimos, ismingizni kiriting");
+    return;
+  }
+
+  const token = "8728475122:AAFKCfSXtEGIZVFo0FfmnYS4ZZBBh84OZhY";
+  const chat_id = "824823875";
+
+  const message = `📩 Yangi mehmon:\n👤 Ism: ${name}\n📍 Holati: ${attendance}`;
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: message
+    })
+  })
+  .then(() => alert("Rahmat! Yuborildi ✅"))
+  .catch(() => alert("Xatolik ❌"));
+}
 </script>
  </body>
 </html>
