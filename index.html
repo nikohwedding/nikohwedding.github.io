@@ -477,14 +477,13 @@
     font-family: 'Playfair Display', serif;
   }
 
-  .calendar-container {
-  width: 100%;
-  overflow-x: auto; /* ВАЖНО */
+ .calendar-container {
+  display: flex;
+  justify-content: center;
 }
 
   .calendar {
     width: 100%;
-    min-width: 350px; /* ВАЖНО */
     max-width: 600px;
 	border-collapse: separate;
     border-spacing: 5px;
@@ -537,8 +536,8 @@
 	@media (max-width: 480px) {
   .calendar th,
   .calendar td {
-    padding: 6px;
-    font-size: 0.75rem;
+    padding: 5px;
+    font-size: 0.7rem;
   }
 
   .calendar-section {
