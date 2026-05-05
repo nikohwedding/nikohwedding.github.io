@@ -478,17 +478,15 @@
   }
 
   .calendar-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: auto; /* фикс для телефона */
+  width: 100%;
+  overflow-x: auto; /* ВАЖНО */
 }
 
   .calendar {
     width: 100%;
+    min-width: 350px; /* ВАЖНО */
     max-width: 600px;
-	min-width: 350px;
-    border-collapse: separate;
+	border-collapse: separate;
     border-spacing: 5px;
     background: white;
     border-radius: 15px;
@@ -539,8 +537,8 @@
 	@media (max-width: 480px) {
   .calendar th,
   .calendar td {
-    padding: 8px;
-    font-size: 0.8rem;
+    padding: 6px;
+    font-size: 0.75rem;
   }
 
   .calendar-section {
