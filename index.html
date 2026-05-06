@@ -645,17 +645,24 @@ data-en-placeholder="Your name">
   <br>
   <select id="attendance"
     style="padding:12px; margin:10px; width:270px; border-radius:8px;">
-    <option value="Kelaman">Kelaman</option>
-    <option value="Kela olmayman">Kela olmayman</option>
+     <option value="Kelaman"
+    data-uz="Kelaman"
+    data-ru="Приду"
+    data-en="I will come">
+    Kelaman
+  </option>
+
+  <option value="Kela olmayman"
+    data-uz="Kela olmayman"
+    data-ru="Не приду"
+    data-en="I will not come">
+    Kela olmayman
+  </option>
   </select>
   <br>
   <button onclick="sendToTelegram()" class="btn">Yuborish</button>
 </section>
-       <footer class="footer">
-        <p>Abdulloshoh &amp; Zebo| 23 may 2026</p>
-    </footer>
-
-   <script>
+        <script>
   // Таймер
   function updateTimer() {
     const weddingDate = new Date("2026-05-23T19:00:00").getTime();
