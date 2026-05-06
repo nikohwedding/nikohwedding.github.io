@@ -636,12 +636,15 @@ data-en="Will you attend our wedding?😉">
 To‘yga kelasizmi?😉
 </h2>
 
-  <input type="text" id="name"
-placeholder="Ismingiz"
-data-uz-placeholder="Ismingiz"
-data-ru-placeholder="Ваше имя"
-data-en-placeholder="Your name">
-    style="padding:12px; margin:10px; width:250px; border-radius:8px; border:1px solid #ccc;">
+  <input 
+  type="text" 
+  id="name"
+  placeholder="Ismingiz"
+  data-uz-placeholder="Ismingiz"
+  data-ru-placeholder="Ваше имя"
+  data-en-placeholder="Your name"
+  style="padding:12px; margin:10px; width:250px; border-radius:8px; border:1px solid #ccc;"
+>
   <br>
   <select id="attendance"
     style="padding:12px; margin:10px; width:270px; border-radius:8px;">
@@ -712,8 +715,7 @@ data-en-placeholder="Your name">
   });
 </script>
 	<script>
-function sendToTelegram() {
-	function setLang(lang) {
+		function setLang(lang) {
   document.querySelectorAll("[data-uz]").forEach(el => {
     el.textContent = el.getAttribute("data-" + lang);
   });
@@ -722,7 +724,8 @@ function sendToTelegram() {
     el.placeholder = el.getAttribute("data-" + lang + "-placeholder");
   });
 }
-  const name = document.getElementById("name").value;
+function sendToTelegram() {
+	 const name = document.getElementById("name").value;
   const attendance = document.getElementById("attendance").value;
 
   if (!name) {
