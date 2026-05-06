@@ -21,28 +21,23 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body {
+            body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--light);
             color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3 {
+                h1, h2, h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
-        
-        .header {
+                .header {
 			position: fixed;
 			bottom: 20px;
 			right: 20px;
 			z-index: 999;
 		}
-
-        
 		.music-btn {
   position: fixed;
   bottom: 20px;
@@ -63,7 +58,6 @@
   z-index: 999;
   padding: 0;
 }
-
 .music-btn:hover {
   background: var(--secondary);
   color: white;
@@ -81,8 +75,7 @@
             color: white;
             padding: 0 20px;
             position: relative;
-        }
-        
+        }      
         .hero::after {
             content: "";
             position: absolute;
@@ -94,7 +87,6 @@
             background-size: cover;
             z-index: 1;
         }
-        
         .names {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 10px;
@@ -102,7 +94,6 @@
             font-weight: 700;
             text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
-        
         .date {
             font-size: clamp(1.2rem, 2.5vw, 1.8rem);
             letter-spacing: 3px;
@@ -110,7 +101,6 @@
             text-shadow: 0 2px 3px rgba(0,0,0,0.3);
             font-weight: 300;
         }
-        
         .btn {
             display: inline-block;
             background: var(--secondary);
@@ -127,23 +117,19 @@
             font-size: 1rem;
             letter-spacing: 1px;
         }
-        
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         section {
             padding: 80px 0;
             position: relative;
         }
-        
         h2 {
             font-size: 2.5rem;
             margin-bottom: 40px;
@@ -152,7 +138,6 @@
             position: relative;
             display: inline-block;
         }
-        
         h2::after {
             content: '';
             position: absolute;
@@ -163,14 +148,12 @@
             height: 3px;
             background: var(--secondary);
         }
-        
         p {
             margin-bottom: 1.5rem;
             color: var(--text-light);
             font-size: 1.1rem;
         }
-        
-        .invitation {
+            .invitation {
             background: white;
             border-radius: 15px;
             padding: 60px 50px;
@@ -182,13 +165,11 @@
             border: 1px solid rgba(0,0,0,0.05);
             text-align: center;
         }
-        
-      .gallery {
+        .gallery {
   display: flex;
   justify-content: center;
   margin: 40px 0;
 }
-
 .gallery-item {
   position: relative;
   overflow: hidden;
@@ -205,13 +186,10 @@
   border-radius: 12px;
   transition: transform 0.6s ease, filter 0.6s ease;
 }	
-
-
 .gallery-item:hover img {
   transform: scale(1.1);
   filter: brightness(0.6);
 }
-
 .gallery-caption {
   position: absolute;
   bottom: 20px;
@@ -225,20 +203,17 @@
   transform: translateY(20px);
   transition: all 0.4s ease;
 }
-
 .gallery-item:hover .gallery-caption {
   opacity: 1;
   transform: translateY(0);
 }
-
         .timer-section {
             background: var(--primary);
             padding: 80px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-        
+        } 
         .timer {
             display: flex;
             justify-content: center;
@@ -248,7 +223,6 @@
             position: relative;
             z-index: 1;
         }
-        
         .timer-block {
             background: white;
             padding: 25px 20px;
@@ -257,25 +231,21 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
-        
         .timer-block:hover {
             transform: translateY(-5px);
         }
-        
         .timer-number {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--secondary);
             font-family: 'Playfair Display', serif;
         }
-        
         .timer-label {
             font-size: 0.9rem;
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
 		.wedding-date {
 			text-align: center;
 			margin: 10px 0 5px;
@@ -418,7 +388,6 @@ data-ru="В этот счастливый момент для нас больш�
 data-en="At this joyful moment, it would be a great honor for us to see you among our guests. We sincerely invite you to share in the happiness of our wedding celebration.">
 Ana shu baxtiyor lahzalarda Sizni davramiz to‘rida ko‘rish biz uchun ulkan sharafdir. Sizni to‘y marosimimizga taklif etib, quvonchimizga sherik bo‘lishingizni samimiy tilak bilan so‘raymiz.
 </p>
-
 <p style="margin-top: 30px;">
 <strong 
 data-uz="Hurmat bilan Abduraufovlar va Sayfilloyevlar oilasi!"
@@ -648,19 +617,8 @@ To‘yga kelasizmi?😉
   <br>
   <select id="attendance"
     style="padding:12px; margin:10px; width:270px; border-radius:8px;">
-     <option value="Kelaman"
-    data-uz="Kelaman"
-    data-ru="Приду"
-    data-en="I will come">
-    Kelaman
-  </option>
-
-  <option value="Kela olmayman"
-    data-uz="Kela olmayman"
-    data-ru="Не приду"
-    data-en="I will not come">
-    Kela olmayman
-  </option>
+     <option value="Kelaman">Kelaman</option>
+<option value="Kela olmayman">Kela olmayman</option>
   </select>
   <br>
   <button onclick="sendToTelegram()" class="btn">Yuborish</button>
@@ -708,22 +666,31 @@ To‘yga kelasizmi?😉
       bgMusic.pause();
       musicBtn.textContent = '🔇';
     } else {
-      bgMusic.play();
+     bgMusic.play().catch(() => {
+  alert("Нажмите ещё раз для включения музыки");
+});
       musicBtn.textContent = '🔊';
     }
     isPlaying = !isPlaying;
   });
 </script>
 	<script>
-		function setLang(lang) {
-  document.querySelectorAll("[data-uz]").forEach(el => {
-    el.textContent = el.getAttribute("data-" + lang);
+function setLang(lang) {
+  document.querySelectorAll("[data-uz], [data-ru], [data-en]").forEach(el => {
+    const value = el.getAttribute("data-" + lang);
+    if (value) {
+      el.textContent = value;
+    }
   });
 
-  document.querySelectorAll("[data-uz-placeholder]").forEach(el => {
-    el.placeholder = el.getAttribute("data-" + lang + "-placeholder");
+  document.querySelectorAll("[data-uz-placeholder], [data-ru-placeholder], [data-en-placeholder]").forEach(el => {
+    const value = el.getAttribute("data-" + lang + "-placeholder");
+    if (value) {
+      el.placeholder = value;
+    }
   });
-}
+}		
+
 function sendToTelegram() {
 	 const name = document.getElementById("name").value;
   const attendance = document.getElementById("attendance").value;
@@ -733,7 +700,7 @@ function sendToTelegram() {
     return;
   }
 
-  const token = "8728475122:AAFKCfSXtEGIZVFo0FfmnYS4ZZBBh84OZhY";
+  const token = "8728475122:AAFvGQs_adsv_M_HnxYBQV7ps8bJrwJ_5a0";
   const chat_id = "824823875";
 
   const message = `📩 Yangi mehmon:\n👤 Ism: ${name}\n📍 Holati: ${attendance}`;
