@@ -669,28 +669,24 @@ Yuborish
 		
 </section>
         <script>
+			let currentLang = "uz";
   // Таймер
   function updateTimer() {
     const weddingDate = new Date("2026-05-23T19:00:00").getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
-
     if (distance < 0) return;
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
     document.getElementById("days").textContent = String(days).padStart(2, '0');
     document.getElementById("hours").textContent = String(hours).padStart(2, '0');
     document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
     document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
   }
-
   setInterval(updateTimer, 1000);
   updateTimer();
-
   // Плавная прокрутка
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -698,14 +694,11 @@ Yuborish
       document.querySelector(this.getAttribute('href')).scrollIntoView({
         behavior: 'smooth'
       });
-    });
-  });
-
+    }); });
   // Музыка
   const musicBtn = document.getElementById('musicBtn');
   const bgMusic = document.getElementById('bgMusic');
   let isPlaying = false;
-
   musicBtn.addEventListener('click', () => {
     if (isPlaying) {
       bgMusic.pause();
@@ -721,21 +714,20 @@ Yuborish
 </script>
 	<script>
 function setLang(lang) {
+  currentLang = lang;
+
   document.querySelectorAll("[data-uz], [data-ru], [data-en]").forEach(el => {
     const value = el.getAttribute("data-" + lang);
     if (value) {
       el.textContent = value;
     }
   });
-
   document.querySelectorAll("[data-uz-placeholder], [data-ru-placeholder], [data-en-placeholder]").forEach(el => {
     const value = el.getAttribute("data-" + lang + "-placeholder");
     if (value) {
       el.placeholder = value;
     }
   });
-
-  // 🔥 ДОБАВЬ ЭТО (обязательно)
   document.querySelectorAll("option").forEach(el => {
     const value = el.getAttribute("data-" + lang);
     if (value) {
@@ -743,21 +735,16 @@ function setLang(lang) {
     }
   });
 }	
-
 function sendToTelegram() {
 	 const name = document.getElementById("name").value;
   const attendance = document.getElementById("attendance").value;
 
   if (!name) {
     alert("Iltimos, ismingizni kiriting");
-    return;
-  }
-
+    return;  }
   const token = "8728475122:AAFvGQs_adsv_M_HnxYBQV7ps8bJrwJ_5a0";
   const chat_id = "824823875";
-
   const message = `📩 Yangi mehmon:\n👤 Ism: ${name}\n📍 Holati: ${attendance}`;
-
   fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
     method: "POST",
     headers: {
@@ -768,13 +755,15 @@ function sendToTelegram() {
       text: message
     })
   })
-  .then(() => alert({
-  uz: "Rahmat! Yuborildi ✅",
-  ru: "Спасибо! Отправлено ✅",
-  en: "Thanks! Sent ✅"
-}[lang]);
-  .catch(() => alert("Xatolik ❌"));
-}
+  .then(() => {
+  const messages = {
+    uz: "Rahmat! Yuborildi ✅",
+    ru: "Спасибо! Отправлено ✅",
+    en: "Thanks! Sent ✅"
+  };
+  alert(messages["uz"]);
+})
+  .catch(() => alert("Xatolik ❌"));}
 </script>
  </body>
 </html>
