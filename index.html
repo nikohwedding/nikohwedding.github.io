@@ -347,9 +347,11 @@
 <body>
 <div class="header">
   <div style="position: fixed; top: 20px; right: 20px; z-index:1000;">
-    <button onclick="setLang('uz')" class="btn">UZ</button>
-    <button onclick="setLang('ru')" class="btn">RU</button>
-    <button onclick="setLang('en')" class="btn">EN</button>
+   <div class="lang-switch">
+  <button onclick="setLang('uz')" class="lang-btn">UZ</button>
+  <button onclick="setLang('ru')" class="lang-btn">RU</button>
+  <button onclick="setLang('en')" class="lang-btn">EN</button>
+</div>
   </div>
 	<button class="music-btn" id="musicBtn" title="Музыка 🎵">🔇</button>
 </div>
@@ -577,6 +579,32 @@ May 2026
     padding: 10px;
   }
 }
+	.lang-switch {
+  display: flex;
+  gap: 8px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.lang-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: var(--secondary);
+  color: white;
+  transform: translateY(-2px);
+}
 </style>
         <section class="location">
            <h2
@@ -615,13 +643,30 @@ To‘yga kelasizmi?😉
   style="padding:12px; margin:10px; width:250px; border-radius:8px; border:1px solid #ccc;"
 >
   <br>
-  <select id="attendance"
-    style="padding:12px; margin:10px; width:270px; border-radius:8px;">
-     <option value="Kelaman">Kelaman</option>
-<option value="Kela olmayman">Kela olmayman</option>
-  </select>
-  <br>
-  <button onclick="sendToTelegram()" class="btn">Yuborish</button>
+	<select id="attendance"
+  style="padding:12px; margin:10px; width:270px; border-radius:8px;">
+
+  <option value="Kelaman"
+    data-uz="Kelaman"
+    data-ru="Приду"
+    data-en="I will come">
+    Kelaman
+  </option>
+
+  <option value="Kela olmayman"
+    data-uz="Kela olmayman"
+    data-ru="Не приду"
+    data-en="I will not come">
+    Kela olmayman
+  </option>
+</select>
+<button onclick="sendToTelegram()" class="btn"
+data-uz="Yuborish"
+data-ru="Отправить"
+data-en="Send">
+Yuborish
+</button>		
+		
 </section>
         <script>
   // Таймер
@@ -715,7 +760,11 @@ function sendToTelegram() {
       text: message
     })
   })
-  .then(() => alert("Rahmat! Yuborildi ✅"))
+  .then(() => alert({
+  uz: "Rahmat! Yuborildi ✅",
+  ru: "Спасибо! Отправлено ✅",
+  en: "Thanks! Sent ✅"
+}[lang]);
   .catch(() => alert("Xatolik ❌"));
 }
 </script>
