@@ -347,11 +347,10 @@
 <body>
 <div class="header">
   <div style="position: fixed; top: 20px; right: 20px; z-index:1000;">
-   <div class="lang-switch">
+  <div class="lang-switch">
   <button onclick="setLang('uz')" class="lang-btn">UZ</button>
   <button onclick="setLang('ru')" class="lang-btn">RU</button>
   <button onclick="setLang('en')" class="lang-btn">EN</button>
-</div>
   </div>
 	<button class="music-btn" id="musicBtn" title="Музыка 🎵">🔇</button>
 </div>
@@ -585,7 +584,8 @@ May 2026
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 9999;
+  pointer-events: auto;
 }
 
 .lang-btn {
@@ -734,7 +734,15 @@ function setLang(lang) {
       el.placeholder = value;
     }
   });
-}		
+
+  // 🔥 ДОБАВЬ ЭТО (обязательно)
+  document.querySelectorAll("option").forEach(el => {
+    const value = el.getAttribute("data-" + lang);
+    if (value) {
+      el.textContent = value;
+    }
+  });
+}	
 
 function sendToTelegram() {
 	 const name = document.getElementById("name").value;
