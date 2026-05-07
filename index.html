@@ -337,7 +337,21 @@
     </style>
 </head>
 <body>
+	<div id="loader" class="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">A & Z</div>
+</div>
 	<div id="opening-screen" class="opening-screen">
+		<div class="petals">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <div class="opening-content">
     <h1>Abdulloshoh & Zebo</h1>
     <p>23 • 05 • 2026</p>
@@ -669,6 +683,119 @@ May 2026
     border-color: var(--secondary);
     transform: translateY(-3px);
 }
+	/* LOADER */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    flex-direction: column;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-ring {
+    width: 90px;
+    height: 90px;
+    border: 3px solid rgba(212,175,55,0.2);
+    border-top: 3px solid #d4af37;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+    margin-bottom: 20px;
+}
+
+.loader-text {
+    color: white;
+    font-size: 2rem;
+    letter-spacing: 8px;
+    font-family: 'Playfair Display', serif;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* PETALS */
+
+.petals {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.petals span {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: rgba(212,175,55,0.7);
+    border-radius: 50%;
+    animation: float 12s linear infinite;
+    bottom: -20px;
+}
+
+.petals span:nth-child(1){left:10%; animation-duration:10s;}
+.petals span:nth-child(2){left:20%; animation-duration:14s;}
+.petals span:nth-child(3){left:35%; animation-duration:11s;}
+.petals span:nth-child(4){left:50%; animation-duration:16s;}
+.petals span:nth-child(5){left:65%; animation-duration:13s;}
+.petals span:nth-child(6){left:75%; animation-duration:9s;}
+.petals span:nth-child(7){left:85%; animation-duration:15s;}
+.petals span:nth-child(8){left:95%; animation-duration:12s;}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(40px) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* GLASS RSVP */
+
+.glass-rsvp {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.glass-rsvp input,
+.glass-rsvp select {
+    background: rgba(255,255,255,0.7);
+    border: none !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.glass-rsvp input:focus,
+.glass-rsvp select:focus {
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212,175,55,0.25);
+}
+
+.glass-rsvp .btn {
+    box-shadow: 0 0 20px rgba(212,175,55,0.35);
+}
 </style>
         <section class="location">
            <h2
@@ -697,7 +824,7 @@ Boshlanadi 19:00
 </div>
                   </section>
     </div> <!-- container закрываем ТОЛЬКО здесь -->
-<section class="rsvp" style="text-align:center; padding:60px 20px;">
+<section class="rsvp glass-rsvp" style="text-align:center; padding:60px 20px;">
   <h2
 data-uz="To‘yga kelasizmi?😉"
 data-ru="Вы придёте на свадьбу?😉"
@@ -845,6 +972,13 @@ function openInvitation() {
   musicBtn.textContent = '🔊';
   isPlaying = true;
 }
+</script>
+	<script>
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").classList.add("hide");
+  }, 1200);
+});
 </script>
  </body>
 </html>
