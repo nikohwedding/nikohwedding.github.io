@@ -327,6 +327,20 @@
             background-size: cover;
             background-position: bottom;
         }
+		.english-line{
+    display:none;
+    text-align:center;
+}
+
+.arabic-line{
+    display:none;
+    font-size:48px;
+    direction:rtl;
+    text-align:center;
+    margin:10px 0;
+    line-height:1.6;
+    font-family: serif;
+}
                 @media (max-width: 768px) {
             section {
                 padding: 60px 0;
@@ -411,15 +425,15 @@ Taklifnomani ochish
 				<h2 
 data-uz="Hurmatli do'stlar va yaqinlar!"
 data-ru="Дорогие друзья и близкие!"
-data-en="Bismillahi Rahmani Raheem">
+data-en="">
 Hurmatli do'stlar va yaqinlar!
 </h2>
 
-<div class="arabic-line">
+<div class="arabic-line" data-en="">
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
 </div>
 
-<h2 class="english-line">
+<h2 class="english-line" data-en="">
 Dear friends and family!
 </h2>
 				<p 
@@ -947,6 +961,16 @@ function setLang(lang) {
       el.textContent = value;
     }
   });
+	const arabic = document.querySelector(".arabic-line");
+const english = document.querySelector(".english-line");
+
+if(lang === "en"){
+    arabic.style.display = "block";
+    english.style.display = "block";
+}else{
+    arabic.style.display = "none";
+    english.style.display = "none";
+}
   document.querySelectorAll("[data-uz-placeholder], [data-ru-placeholder], [data-en-placeholder]").forEach(el => {
     const value = el.getAttribute("data-" + lang + "-placeholder");
     if (value) {
