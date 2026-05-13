@@ -12,7 +12,7 @@
             --accent: #e8c4c4;
             --dark: #5d5b6a;
             --light: #fffafa;
-            --text-dark: #3a3846;
+            --text-rk: #3a3846;
             --text-light: #7a7885;
         }
             * {
@@ -493,39 +493,39 @@ sekund
         </section>
         		<section class="calendar-section">
   <h2
-data-uz="May 2026"
-data-ru="Май 2026"
-data-en="May 2026">
-May 2026
+data-uz="Iyul 2026"
+data-ru="Июль 2026"
+data-en="July 2026">
+July 2026
 </h2>
   <div class="calendar-container">
     <table class="calendar">
       <thead>
-        <tr>
-          <th>Du</th>
-          <th>Se</th>
-          <th>Chor</th>
-          <th>Pay</th>
-          <th>Juma</th>
-          <th>Sha</th>
-          <th>Yak</th>
-        </tr>
-      </thead>
+  <tr>
+    <th data-uz="Du" data-ru="Пн" data-en="Mon">Du</th>
+    <th data-uz="Se" data-ru="Вт" data-en="Tue">Se</th>
+    <th data-uz="Chor" data-ru="Ср" data-en="Wed">Chor</th>
+    <th data-uz="Pay" data-ru="Чт" data-en="Thu">Pay</th>
+    <th data-uz="Juma" data-ru="Пт" data-en="Fri">Juma</th>
+    <th data-uz="Sha" data-ru="Сб" data-en="Sat">Sha</th>
+    <th data-uz="Yak" data-ru="Вс" data-en="Sun">Yak</th>
+  </tr>
+</thead>
      <tbody>
   <tr>
-    <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+    <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
   </tr>
   <tr>
-    <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+    <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td class="highlight">11</td>
   </tr>
   <tr>
-    <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+    <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
   </tr>
   <tr>
-    <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td class="highlight">23</td><td>24</td>
+    <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
   </tr>
   <tr>
-    <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+    <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
   </tr>
 </tbody>
     </table>
@@ -821,7 +821,7 @@ data-ru="Место проведения свадьбы"
 data-en="Wedding venue">
 To‘y marosimi o‘tkaziladigan joy
 </h2>
-            <p>Da Mikelle Palazzo "</p>
+            <p>Da Mikelle Palazzo</p>
             <p class="address">69-02 Garfield Ave
 								Woodside, NY 11377</p>
             <p
@@ -951,6 +951,12 @@ function setLang(lang) {
       el.textContent = value;
     }
   });
+	document.querySelectorAll("th").forEach(el => {
+  const value = el.getAttribute("data-" + lang);
+  if (value) {
+    el.textContent = value;
+  }
+});
 }	
 function sendToTelegram() {
 	 const name = document.getElementById("name").value;
