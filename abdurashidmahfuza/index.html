@@ -1003,11 +1003,13 @@ if(lang === "en"){
     }
   });
   document.querySelectorAll("option").forEach(el => {
-    const value = el.getAttribute("data-" + lang);
-    if (value) {
-      el.textContent = value;
-    }
-  });
+  const text = el.getAttribute("data-" + lang);
+
+  if (text) {
+    el.textContent = text;
+    el.value = text;
+  }
+});
 	document.querySelectorAll("th").forEach(el => {
   const value = el.getAttribute("data-" + lang);
   if (value) {
