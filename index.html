@@ -953,8 +953,29 @@ function setLang(lang) {
   });
 }	
 function sendToTelegram() {
-	 const name = document.getElementById("name").value;
+
+  if (localStorage.getItem("rsvp_sent")) {
+
+    const alreadyMessages = {
+      uz: "Siz allaqachon javob yuborgansiz ✅",
+      ru: "Вы уже отправили ответ ✅",
+      en: "You have already submitted your response ✅"
+    };
+
+    alert(alreadyMessages[currentLang]);
+
+    return;
+  }
+
+  const name = document.getElementById("name").value.trim();
   const attendance = document.getElementById("attendance").value;
+
+  const nameRegex = /^[A-Za-zА-Яа-яЁёЎўҚқҒғҲҳ'-]{2,15}( [A-Za-zА-Яа-яЁёЎўҚқҒғҲҳ'-]{2,15})?$/;
+
+  if (!nameRegex.test(name)) {
+    alert("Please enter only your name.");
+    return;
+  }
 
   if (!name) {
     alert("Iltimos, ismingizni kiriting");
@@ -973,6 +994,7 @@ function sendToTelegram() {
     })
   })
   .then(() => {
+	  localStorage.setItem("rsvp_sent", "true");
   const messages = {
     uz: "Rahmat! Yuborildi ✅",
     ru: "Спасибо! Отправлено ✅",
