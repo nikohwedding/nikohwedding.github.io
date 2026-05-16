@@ -813,6 +813,32 @@ May 2026
 .glass-rsvp .btn {
     box-shadow: 0 0 20px rgba(212,175,55,0.35);
 }
+	.footer-socials{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.footer-socials a{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:white;
+    font-size:22px;
+    border:1px solid rgba(255,255,255,0.3);
+    transition:0.3s ease;
+}
+
+.footer-socials a:hover{
+    background:var(--secondary);
+    border-color:var(--secondary);
+    transform:translateY(-3px);
+}	
 </style>
         <section class="location">
            <h2
@@ -884,6 +910,28 @@ Yuborish
 </button>		
 		
 </section>
+	<footer class="footer">
+
+  <p
+  data-uz=" NikohWedding.uz tomonidan yaratilgan"
+  data-ru=" Создано NikohWedding.uz"
+  data-en=" Made by NikohWedding.uz">
+   NikohWedding.uz tomonidan yaratilgan
+  </p>
+
+  <div class="footer-socials">
+
+    <a href="https://t.me/azimovl_l2002" target="_blank">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
+
+    <a href="https://instagram.com/azimovabdulaziz_2002" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+  </div>
+
+</footer>
         <script>
 			let currentLang = "uz";
   // Таймер
