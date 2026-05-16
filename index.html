@@ -956,9 +956,9 @@ function sendToTelegram() {
   if (localStorage.getItem("rsvp_sent")) {
 
     const alreadyMessages = {
-      uz: "Siz allaqachon javob yuborgansiz ✅",
-      ru: "Вы уже отправили ответ ✅",
-      en: "You have already submitted your response ✅"
+      uz: "Siz allaqachon javob yuborgansiz ❌",
+      ru: "Вы уже отправили ответ ❌",
+      en: "You have already submitted your response ❌"
     };
 
     alert(alreadyMessages[currentLang]);
