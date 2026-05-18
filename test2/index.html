@@ -1,15 +1,268 @@
 <!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+font-family:'Cormorant Garamond', serif;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+url('photo.jpg') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.content{
+animation:fade 2s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.subtitle{
+letter-spacing:6px;
+font-size:16px;
+color:#d4af37;
+}
+
+.names{
+font-size:90px;
+line-height:1.1;
+margin-top:20px;
+color:#d4af37;
+}
+
+.date{
+margin-top:25px;
+font-size:28px;
+}
+
+.btn{
+margin-top:40px;
+padding:14px 36px;
+border:1px solid #d4af37;
+background:transparent;
+color:#d4af37;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+transition:.4s;
+}
+
+.btn:hover{
+background:#d4af37;
+color:black;
+}
+
+.section{
+padding:120px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.grid img{
+width:100%;
+height:650px;
+object-fit:cover;
+border-radius:30px;
+}
+
+.text h2{
+font-size:70px;
+margin-bottom:30px;
+color:#d4af37;
+}
+
+.text p{
+font-size:24px;
+line-height:2;
+color:#ddd;
+}
+
+.timer{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-top:60px;
+}
+
+.box{
+width:120px;
+height:120px;
+border:1px solid #d4af37;
+border-radius:24px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+.box span{
+font-size:42px;
+color:#d4af37;
+}
+
+.box p{
+margin-top:10px;
+}
+
+iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:30px;
+margin-top:50px;
+}
+
+.footer{
+padding:60px;
+text-align:center;
+color:#999;
+font-size:22px;
+}
+
+@media(max-width:900px){
+
+.names{
+font-size:58px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.text h2{
+font-size:48px;
+text-align:center;
+}
+
+.text p{
+text-align:center;
+font-size:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="content">
+
+<div class="subtitle">
+WEDDING DAY
+</div>
+
+<div class="names">
+Abdulaziz <br>
+& <br>
+Shahinabonu
+</div>
+
+<div class="date">
+07 August 2025 • Royal Hall
+</div>
+
+<a href="#about">
+<button class="btn">
+Open Invitation
+</button>
+</a>
+
+</div>
+
 </section>
 
-<section class="location">
+<section class="section" id="about">
+
+<div class="grid">
+
+<img src="photo2.jpg">
+
+<div class="text">
 
 <h2>
-Manzil
+Assalomu Alaykum
 </h2>
 
 <p>
-Royal Hall — Samarqand
+Sizni nikoh to'yimizning eng baxtli kuniga taklif qilamiz.
+<br><br>
+Azimovlar va Abduraufovlar oilasi.
 </p>
+
+</div>
+
+</div>
+
+<div class="timer">
+
+<div class="box">
+<span id="days">0</span>
+<p>Kun</p>
+</div>
+
+<div class="box">
+<span id="hours">0</span>
+<p>Soat</p>
+</div>
+
+<div class="box">
+<span id="minutes">0</span>
+<p>Daqiqa</p>
+</div>
+
+<div class="box">
+<span id="seconds">0</span>
+<p>Soniya</p>
+</div>
+
+</div>
 
 <iframe src="https://www.google.com/maps?q=39.64737200258995,66.95507941354002&hl=es;z=15&output=embed"></iframe>
 
@@ -28,16 +281,17 @@ setInterval(() => {
 const now = new Date().getTime();
 const distance = weddingDate - now;
 
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("days").innerHTML =
+Math.floor(distance / (1000 * 60 * 60 * 24));
 
+document.getElementById("hours").innerHTML =
+Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
-document.getElementById('days').innerHTML = days;
-document.getElementById('hours').innerHTML = hours;
-document.getElementById('minutes').innerHTML = minutes;
-document.getElementById('seconds').innerHTML = seconds;
+document.getElementById("minutes").innerHTML =
+Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("seconds").innerHTML =
+Math.floor((distance % (1000 * 60)) / 1000);
 
 },1000);
 
