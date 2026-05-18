@@ -1,49 +1,229 @@
 <!DOCTYPE html>
-</section>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<section class="section" id="invite">
-<h2 class="section-title">Assalomu Alaykum</h2>
-<div class="text">
-Sizni nikoh to'yimizning unutilmas oqshomiga taklif qilamiz.
-<br><br>
-Azimovlar va Abduraufovlar oilasi.
+<title>Wedding Invitation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Montserrat', sans-serif;
+background:#f8f6f2;
+color:#222;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:50px 30px;
+border-radius:30px;
+max-width:550px;
+width:100%;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.photo{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:30px;
+border:5px solid #f3ede5;
+}
+
+.names{
+font-size:52px;
+font-weight:300;
+line-height:1.4;
+}
+
+.text{
+margin-top:25px;
+color:#777;
+line-height:1.8;
+font-size:18px;
+}
+
+.date{
+margin-top:30px;
+font-size:22px;
+font-weight:600;
+}
+
+.btn{
+margin-top:35px;
+padding:14px 32px;
+background:#c8a27a;
+color:white;
+border:none;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.section{
+padding:100px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:42px;
+font-weight:300;
+margin-bottom:40px;
+}
+
+.timer{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.box{
+background:white;
+padding:25px;
+width:110px;
+border-radius:24px;
+box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.box span{
+font-size:38px;
+font-weight:600;
+}
+
+.box p{
+margin-top:10px;
+color:#777;
+}
+
+iframe{
+width:100%;
+height:350px;
+border:none;
+border-radius:24px;
+margin-top:40px;
+max-width:900px;
+}
+
+footer{
+padding:50px;
+text-align:center;
+color:#999;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="card">
+
+<img src="photo.jpg" class="photo">
+
+<div class="names">
+Abdulaziz <br>
+& <br>
+Shahinabonu
 </div>
+
+<div class="text">
+Sizni nikoh to'yimizga taklif qilamiz
+</div>
+
+<div class="date">
+07 Avgust 2025 | 19:00
+</div>
+
+<a href="#countdown">
+<button class="btn">
+Taklifnomani Ochish
+</button>
+</a>
+
+</div>
+
 </section>
 
-<section class="section">
-<h2 class="section-title">To'ygacha Qoldi</h2>
+<section class="section" id="countdown">
+
+<h2>To'ygacha Qoldi</h2>
 
 <div class="timer">
+
 <div class="box">
-<span id="days">00</span>
+<span id="days">0</span>
 <p>Kun</p>
 </div>
 
 <div class="box">
-<span id="hours">00</span>
+<span id="hours">0</span>
 <p>Soat</p>
 </div>
 
 <div class="box">
-<span id="minutes">00</span>
+<span id="minutes">0</span>
 <p>Daqiqa</p>
 </div>
 
 <div class="box">
-<span id="seconds">00</span>
+<span id="seconds">0</span>
 <p>Soniya</p>
 </div>
+
 </div>
+
 </section>
 
-<section class="section map">
-<h2 class="section-title">Manzil</h2>
+<section class="section">
 
-<div class="text">
-Royal Hall — Samarqand
-</div>
+<h2>Manzil</h2>
+
+<p>Royal Hall — Samarqand</p>
 
 <iframe src="https://www.google.com/maps?q=39.64737200258995,66.95507941354002&hl=es;z=15&output=embed"></iframe>
+
 </section>
 
 <footer>
@@ -51,9 +231,11 @@ Abdulaziz & Shahinabonu
 </footer>
 
 <script>
+
 const weddingDate = new Date("Aug 7, 2025 19:00:00").getTime();
 
 setInterval(() => {
+
 const now = new Date().getTime();
 const distance = weddingDate - now;
 
@@ -62,12 +244,13 @@ const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-
 document.getElementById("days").innerHTML = days;
 document.getElementById("hours").innerHTML = hours;
 document.getElementById("minutes").innerHTML = minutes;
 document.getElementById("seconds").innerHTML = seconds;
+
 }, 1000);
+
 </script>
 
 </body>
