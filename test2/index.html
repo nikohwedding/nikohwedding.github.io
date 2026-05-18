@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+</section>
 
+<section class="location">
+
+<h2>
+Manzil
+</h2>
+
+<p>
+Royal Hall — Samarqand
+</p>
+
+<iframe src="https://www.google.com/maps?q=39.64737200258995,66.95507941354002&hl=es;z=15&output=embed"></iframe>
+
+</section>
+
+<div class="footer">
+Abdulaziz & Shahinabonu
+</div>
+
+<script>
+
+const weddingDate = new Date("Aug 7, 2025 19:00:00").getTime();
+
+setInterval(() => {
+
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+document.getElementById('days').innerHTML = days;
+document.getElementById('hours').innerHTML = hours;
+document.getElementById('minutes').innerHTML = minutes;
+document.getElementById('seconds').innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
