@@ -1,430 +1,398 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wedding Invitation</title>
+<title>Abdulaziz & Shahinabonu</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
---gold:#d4af37;
---bg:#f7f2eb;
---text:#3d3d3d;
+  --bg:#0b0b0f;
+  --card:rgba(255,255,255,0.06);
+  --gold:#d6b36a;
+  --text:#ffffff;
+  --muted:#c9c9c9;
+  --line:rgba(255,255,255,0.12);
 }
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-font-family:'Montserrat',sans-serif;
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Outfit',sans-serif;
+  overflow-x:hidden;
 }
 
-/* OPEN SCREEN */
+/* BACKGROUND GLOW */
 
-.opening{
-position:fixed;
-inset:0;
-z-index:9999;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:
-linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
-url('photo.jpg') center/cover;
-transition:1s;
+.blur{
+  position:fixed;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(214,179,106,0.12);
+  filter:blur(120px);
+  z-index:-1;
 }
 
-.opening.hide{
-opacity:0;
-visibility:hidden;
+.blur1{
+  top:-150px;
+  left:-150px;
 }
 
-.opening-content h1{
-font-family:'Playfair Display',serif;
-font-size:90px;
-color:white;
-line-height:1.1;
-}
-
-.opening-content p{
-margin-top:20px;
-font-size:22px;
-letter-spacing:5px;
-color:white;
-}
-
-.open-btn{
-margin-top:40px;
-padding:15px 38px;
-border:none;
-border-radius:50px;
-background:white;
-color:black;
-font-size:16px;
-cursor:pointer;
-transition:.3s;
-}
-
-.open-btn:hover{
-transform:translateY(-4px);
+.blur2{
+  bottom:-200px;
+  right:-100px;
 }
 
 /* HERO */
 
 .hero{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-position:relative;
-overflow:hidden;
+  height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
 }
 
 .hero::before{
-content:'';
-position:absolute;
-inset:0;
-background:
-linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),
-url('photo.jpg') center/cover;
-transform:scale(1.05);
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+  linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.7)),
+  url('photo.jpg') center/cover;
+  transform:scale(1.05);
 }
 
 .hero-content{
-position:relative;
-z-index:2;
-color:white;
-animation:fade 2s ease;
+  position:relative;
+  z-index:2;
+  padding:20px;
 }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+.hero-sub{
+  letter-spacing:7px;
+  color:var(--gold);
+  margin-bottom:20px;
+  font-size:14px;
 }
 
-.subtitle{
-letter-spacing:8px;
-font-size:14px;
-margin-bottom:20px;
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(70px,10vw,150px);
+  font-weight:600;
+  line-height:0.9;
 }
 
-.names{
-font-family:'Playfair Display',serif;
-font-size:95px;
-line-height:1.1;
+.hero p{
+  margin-top:30px;
+  color:var(--muted);
+  font-size:18px;
 }
 
-.date{
-margin-top:25px;
-font-size:24px;
-letter-spacing:3px;
+.hero-btn{
+  display:inline-block;
+  margin-top:40px;
+  padding:16px 38px;
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:50px;
+  color:white;
+  text-decoration:none;
+  backdrop-filter:blur(12px);
+  background:rgba(255,255,255,0.08);
+  transition:.4s;
 }
 
-.btn{
-margin-top:40px;
-padding:16px 40px;
-border:none;
-border-radius:50px;
-background:white;
-color:black;
-font-size:16px;
-cursor:pointer;
-transition:.4s;
-}
-
-.btn:hover{
-transform:translateY(-5px);
+.hero-btn:hover{
+  transform:translateY(-5px);
+  background:var(--gold);
+  color:black;
 }
 
 /* SECTION */
 
-.section{
-padding:120px 20px;
-max-width:1200px;
-margin:auto;
+section{
+  padding:120px 20px;
 }
 
-.invitation-box{
-background:white;
-padding:70px 50px;
-border-radius:35px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-text-align:center;
-margin-top:-100px;
-position:relative;
-z-index:5;
+.container{
+  width:min(1150px,100%);
+  margin:auto;
 }
 
-.invitation-box h2{
-font-family:'Playfair Display',serif;
-font-size:64px;
-margin-bottom:30px;
+/* INVITATION */
+
+.invitation{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
 }
 
-.invitation-box p{
-font-size:20px;
-line-height:2;
-color:#666;
+.invite-card{
+  padding:50px;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:30px;
+  backdrop-filter:blur(20px);
 }
 
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-margin-top:80px;
+.invite-card h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:60px;
+  margin-bottom:25px;
 }
 
-.gallery img{
-width:100%;
-height:650px;
-object-fit:cover;
-border-radius:30px;
-transition:.5s;
+.invite-card p{
+  color:var(--muted);
+  line-height:1.9;
+  margin-bottom:20px;
 }
 
-.gallery img:hover{
-transform:scale(1.03);
+.invite-image{
+  position:relative;
+}
+
+.invite-image img{
+  width:100%;
+  border-radius:30px;
+  display:block;
 }
 
 /* TIMER */
 
 .timer-section{
-padding:120px 20px;
-text-align:center;
+  text-align:center;
 }
 
-.timer-title{
-font-family:'Playfair Display',serif;
-font-size:70px;
-margin-bottom:50px;
+.timer-section h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:70px;
+  margin-bottom:60px;
 }
 
 .timer{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
 }
 
-.box{
-width:130px;
-height:130px;
-background:white;
-border-radius:30px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+.timer-box{
+  width:170px;
+  padding:35px 20px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  transition:.4s;
 }
 
-.box span{
-font-size:46px;
-font-weight:600;
-color:var(--gold);
+.timer-box:hover{
+  transform:translateY(-8px);
 }
 
-.box p{
-margin-top:10px;
-color:#777;
+.timer-number{
+  font-size:55px;
+  color:var(--gold);
+  font-weight:600;
+  text-shadow:0 0 20px rgba(214,179,106,.5);
 }
 
-/* CALENDAR */
-
-.calendar{
-margin-top:100px;
-text-align:center;
+.timer-label{
+  margin-top:10px;
+  color:var(--muted);
+  letter-spacing:3px;
+  text-transform:uppercase;
 }
 
-.calendar h2{
-font-family:'Playfair Display',serif;
-font-size:60px;
-margin-bottom:40px;
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
 }
 
-.calendar-table{
-margin:auto;
-border-spacing:10px;
+.gallery img{
+  width:100%;
+  border-radius:30px;
+  transition:.7s;
 }
 
-.calendar-table td,
-.calendar-table th{
-width:70px;
-height:70px;
-background:white;
-border-radius:16px;
-font-weight:600;
+.gallery img:hover{
+  transform:scale(1.03);
 }
 
-.highlight{
-background:var(--gold) !important;
-color:white;
+/* DATE */
+
+.date-section{
+  text-align:center;
 }
 
-/* MAP */
-
-.location{
-padding:120px 20px;
-text-align:center;
+.date-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:90px;
 }
 
-.location h2{
-font-family:'Playfair Display',serif;
-font-size:70px;
-margin-bottom:20px;
+.date-sub{
+  color:var(--gold);
+  letter-spacing:6px;
+  margin-top:20px;
 }
 
-.location p{
-font-size:20px;
-color:#666;
+/* LOCATION */
+
+.location-card{
+  background:rgba(255,255,255,0.05);
+  border-radius:35px;
+  padding:60px;
+  border:1px solid rgba(255,255,255,0.08);
+  text-align:center;
+}
+
+.location-card h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:70px;
+  margin-bottom:20px;
+}
+
+.location-card p{
+  color:var(--muted);
+  margin-top:15px;
+}
+
+.map{
+  margin-top:40px;
+  overflow:hidden;
+  border-radius:25px;
 }
 
 iframe{
-width:100%;
-max-width:1100px;
-height:450px;
-border:none;
-border-radius:35px;
-margin-top:50px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+  width:100%;
+  height:420px;
+  border:none;
 }
 
 /* RSVP */
 
 .rsvp{
-margin-top:100px;
-background:white;
-padding:60px 30px;
-border-radius:35px;
-box-shadow:0 15px 40px rgba(0,0,0,.08);
-text-align:center;
+  text-align:center;
 }
 
-.rsvp h2{
-font-family:'Playfair Display',serif;
-font-size:60px;
-margin-bottom:40px;
+.rsvp-card{
+  max-width:700px;
+  margin:auto;
+  padding:60px;
+  border-radius:35px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
 }
 
-.rsvp input,
-.rsvp select{
-width:280px;
-padding:14px;
-margin:10px;
-border:none;
-background:#f3f3f3;
-border-radius:14px;
-font-size:16px;
+.rsvp-card h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:70px;
+  margin-bottom:40px;
 }
 
-.send-btn{
-margin-top:20px;
-padding:14px 34px;
-border:none;
-border-radius:50px;
-background:var(--gold);
-color:white;
-font-size:16px;
-cursor:pointer;
+input,select{
+  width:100%;
+  margin-bottom:20px;
+  padding:18px;
+  border:none;
+  border-radius:18px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  font-size:16px;
 }
 
-/* MUSIC */
+input::placeholder{
+  color:#c8c8c8;
+}
 
-.music-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-width:55px;
-height:55px;
-border:none;
-border-radius:50%;
-background:white;
-font-size:22px;
-cursor:pointer;
-z-index:999;
-box-shadow:0 5px 20px rgba(0,0,0,.2);
+button{
+  padding:18px 40px;
+  border:none;
+  border-radius:50px;
+  background:var(--gold);
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  transition:.4s;
+}
+
+button:hover{
+  transform:translateY(-5px);
 }
 
 /* FOOTER */
 
-.footer{
-padding:60px 20px;
-text-align:center;
-color:#777;
-font-size:22px;
+footer{
+  padding:80px 20px;
+  text-align:center;
+}
+
+footer h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+footer p{
+  color:var(--muted);
 }
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-.names{
-font-size:58px;
-}
+  .invitation{
+    grid-template-columns:1fr;
+  }
 
-.opening-content h1{
-font-size:58px;
-}
+  .gallery{
+    grid-template-columns:1fr;
+  }
 
-.gallery{
-grid-template-columns:1fr;
-}
+  .hero h1{
+    font-size:70px;
+  }
 
-.gallery img{
-height:500px;
-}
+  .timer-section h2,
+  .location-card h2,
+  .rsvp-card h2{
+    font-size:50px;
+  }
 
-.invitation-box h2,
-.timer-title,
-.calendar h2,
-.location h2,
-.rsvp h2{
-font-size:42px;
-}
+  .date-title{
+    font-size:60px;
+  }
 
-.box{
-width:100px;
-height:100px;
-}
+  .invite-card{
+    padding:35px;
+  }
 
-.box span{
-font-size:34px;
-}
-
-.calendar-table td,
-.calendar-table th{
-width:42px;
-height:42px;
-font-size:12px;
-}
+  .rsvp-card{
+    padding:35px;
+  }
 
 }
 
@@ -433,39 +401,8 @@ font-size:12px;
 
 <body>
 
-<!-- OPENING -->
-
-<div class="opening" id="opening">
-
-<div class="opening-content">
-
-<h1>
-Abdulaziz <br>
-& <br>
-Shahinabonu
-</h1>
-
-<p>
-07 • 08 • 2025
-</p>
-
-<button class="open-btn" onclick="openInvitation()">
-Open Invitation
-</button>
-
-</div>
-
-</div>
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button class="music-btn" id="musicBtn">
-🔇
-</button>
+<div class="blur blur1"></div>
+<div class="blur blur2"></div>
 
 <!-- HERO -->
 
@@ -473,24 +410,21 @@ Open Invitation
 
 <div class="hero-content">
 
-<div class="subtitle">
+<div class="hero-sub">
 WEDDING DAY
 </div>
 
-<div class="names">
+<h1>
 Abdulaziz <br>
-& <br>
-Shahinabonu
-</div>
+& Shahinabonu
+</h1>
 
-<div class="date">
-07 August 2025 • Royal Hall
-</div>
+<p>
+07 • 08 • 2025
+</p>
 
-<a href="#invite">
-<button class="btn">
+<a href="#invite" class="hero-btn">
 Open Invitation
-</button>
 </a>
 
 </div>
@@ -499,28 +433,36 @@ Open Invitation
 
 <!-- INVITATION -->
 
-<section class="section" id="invite">
+<section id="invite">
 
-<div class="invitation-box">
+<div class="container invitation">
+
+<div class="invite-card">
 
 <h2>
-Assalomu Alaykum
+Dear Guests
 </h2>
 
 <p>
-Sizni nikoh to'yimizning eng baxtli kuniga taklif qilamiz.
-<br><br>
-Azimovlar va Abduraufovlar oilasi.
+Biz sizni hayotimizdagi eng go‘zal kun —
+nikoh to‘yimizga taklif qilamiz.
+</p>
+
+<p>
+Sizning quvonchimizga sherik bo‘lishingiz
+biz uchun katta baxt va sharafdir.
+</p>
+
+<p>
+Hurmat bilan:<br><br>
+Azimovlar va Abduraufovlar oilasi
 </p>
 
 </div>
 
-<!-- GALLERY -->
-
-<div class="gallery">
-
-<img src="photo.jpg">
+<div class="invite-image">
 <img src="photo2.jpg">
+</div>
 
 </div>
 
@@ -530,75 +472,66 @@ Azimovlar va Abduraufovlar oilasi.
 
 <section class="timer-section">
 
-<h2 class="timer-title">
-To'ygacha Qoldi
+<div class="container">
+
+<h2>
+Countdown
 </h2>
 
 <div class="timer">
 
-<div class="box">
-<span id="days">0</span>
-<p>Kun</p>
+<div class="timer-box">
+<div class="timer-number" id="days">00</div>
+<div class="timer-label">Days</div>
 </div>
 
-<div class="box">
-<span id="hours">0</span>
-<p>Soat</p>
+<div class="timer-box">
+<div class="timer-number" id="hours">00</div>
+<div class="timer-label">Hours</div>
 </div>
 
-<div class="box">
-<span id="minutes">0</span>
-<p>Daqiqa</p>
+<div class="timer-box">
+<div class="timer-number" id="minutes">00</div>
+<div class="timer-label">Minutes</div>
 </div>
 
-<div class="box">
-<span id="seconds">0</span>
-<p>Soniya</p>
+<div class="timer-box">
+<div class="timer-number" id="seconds">00</div>
+<div class="timer-label">Seconds</div>
 </div>
 
 </div>
 
-<!-- CALENDAR -->
+</div>
 
-<div class="calendar">
+</section>
 
-<h2>
-August 2025
-</h2>
+<!-- GALLERY -->
 
-<table class="calendar-table">
+<section>
 
-<tr>
-<th>Mo</th>
-<th>Tu</th>
-<th>We</th>
-<th>Th</th>
-<th>Fr</th>
-<th>Sa</th>
-<th>Su</th>
-</tr>
+<div class="container gallery">
 
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-</tr>
+<img src="photo.jpg">
+<img src="photo2.jpg">
 
-<tr>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-<td class="highlight">7</td>
-<td>8</td>
-<td>9</td>
-<td>10</td>
-</tr>
+</div>
 
-</table>
+</section>
+
+<!-- DATE -->
+
+<section class="date-section">
+
+<div class="container">
+
+<div class="date-title">
+07 August 2025
+</div>
+
+<div class="date-sub">
+ROYAL HALL • SAMARKAND • 19:00
+</div>
 
 </div>
 
@@ -606,40 +539,68 @@ August 2025
 
 <!-- LOCATION -->
 
-<section class="location">
+<section>
+
+<div class="container">
+
+<div class="location-card">
 
 <h2>
-Manzil
+Location
 </h2>
 
 <p>
-Royal Hall — Samarqand
+Royal Hall Restaurant
 </p>
 
-<iframe src="https://www.google.com/maps?q=39.64737200258995,66.95507941354002&hl=es;z=15&output=embed"></iframe>
+<p>
+Samarkand, Uzbekistan
+</p>
+
+<p>
+19:00
+</p>
+
+<div class="map">
+
+<iframe
+src="https://maps.google.com/maps?q=39.64737200258995,66.95507941354002&z=16&output=embed"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- RSVP -->
 
-<div class="rsvp">
+<section class="rsvp">
+
+<div class="container">
+
+<div class="rsvp-card">
 
 <h2>
-To'yga kelasizmi?
+RSVP
 </h2>
 
-<input type="text" placeholder="Ismingiz">
+<input type="text" id="name" placeholder="Your name">
 
-<br>
-
-<select>
+<select id="attendance">
 <option>Kelaman</option>
 <option>Kela olmayman</option>
 </select>
 
-<br>
-
-<button class="send-btn">
-Yuborish
+<button onclick="sendToTelegram()" id="sendBtn">
+Send
 </button>
+
+</div>
 
 </div>
 
@@ -647,81 +608,85 @@ Yuborish
 
 <!-- FOOTER -->
 
-<div class="footer">
+<footer>
+
+<h3>
+Every love story is beautiful,
+but ours is our favorite.
+</h3>
+
+<p>
 Abdulaziz & Shahinabonu
-</div>
+</p>
+
+</footer>
 
 <script>
 
-/* OPENING */
-
-function openInvitation(){
-
-document.getElementById("opening")
-.classList.add("hide");
-
-bgMusic.play();
-
-musicBtn.textContent = "🔊";
-
-isPlaying = true;
-
-}
-
-/* MUSIC */
-
-const musicBtn =
-document.getElementById('musicBtn');
-
-const bgMusic =
-document.getElementById('bgMusic');
-
-let isPlaying = false;
-
-musicBtn.addEventListener('click', () => {
-
-if(isPlaying){
-
-bgMusic.pause();
-musicBtn.textContent = '🔇';
-
-}else{
-
-bgMusic.play();
-musicBtn.textContent = '🔊';
-
-}
-
-isPlaying = !isPlaying;
-
-});
-
 /* TIMER */
 
-const weddingDate =
-new Date("Aug 7, 2025 19:00:00").getTime();
+const weddingDate = new Date("2025-08-07T19:00:00").getTime();
 
 setInterval(() => {
 
-const now =
-new Date().getTime();
+const now = new Date().getTime();
 
-const distance =
-weddingDate - now;
+const distance = weddingDate - now;
 
-document.getElementById("days").innerHTML =
-Math.floor(distance / (1000 * 60 * 60 * 24));
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-document.getElementById("hours").innerHTML =
-Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-document.getElementById("minutes").innerHTML =
-Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-document.getElementById("seconds").innerHTML =
-Math.floor((distance % (1000 * 60)) / 1000);
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
 
 },1000);
+
+/* TELEGRAM */
+
+function sendToTelegram(){
+
+const name = document.getElementById("name").value;
+const attendance = document.getElementById("attendance").value;
+
+if(!name){
+alert("Введите имя");
+return;
+}
+
+const token = "YOUR_BOT_TOKEN";
+const chat_id = "YOUR_CHAT_ID";
+
+const text =
+`📩 Новый гость:\n👤 Имя: ${name}\n📍 Статус: ${attendance}`;
+
+fetch(`https://api.telegram.org/bot${token}/sendMessage`,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+chat_id:chat_id,
+text:text
+})
+})
+
+.then(() => {
+
+const btn = document.getElementById("sendBtn");
+
+btn.innerHTML = "✓ Sent";
+
+})
+
+.catch(() => {
+alert("Ошибка");
+});
+
+}
 
 </script>
 
