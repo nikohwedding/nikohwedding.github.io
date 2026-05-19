@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Royal Wedding</title>
+<title>Wedding Invitation</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+--gold:#d4af37;
+--bg:#f7f2eb;
+--text:#3d3d3d;
+}
 
 *{
 margin:0;
@@ -20,12 +25,69 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-font-family:'Cormorant Garamond', serif;
-background:#0f0f0f;
-color:white;
+font-family:'Montserrat',sans-serif;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
 }
+
+/* OPEN SCREEN */
+
+.opening{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+url('photo.jpg') center/cover;
+transition:1s;
+}
+
+.opening.hide{
+opacity:0;
+visibility:hidden;
+}
+
+.opening-content h1{
+font-family:'Playfair Display',serif;
+font-size:90px;
+color:white;
+line-height:1.1;
+}
+
+.opening-content p{
+margin-top:20px;
+font-size:22px;
+letter-spacing:5px;
+color:white;
+}
+
+.open-btn{
+margin-top:40px;
+padding:15px 38px;
+border:none;
+border-radius:50px;
+background:white;
+color:black;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.open-btn:hover{
+transform:translateY(-4px);
+}
+
+/* HERO */
 
 .hero{
 height:100vh;
@@ -34,19 +96,31 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-background:
-linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-url('photo.jpg') center/cover;
+position:relative;
+overflow:hidden;
 }
 
-.content{
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),
+url('photo.jpg') center/cover;
+transform:scale(1.05);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+color:white;
 animation:fade 2s ease;
 }
 
 @keyframes fade{
 from{
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
 }
 to{
 opacity:1;
@@ -55,50 +129,102 @@ transform:translateY(0);
 }
 
 .subtitle{
-letter-spacing:6px;
-font-size:18px;
-color:#d4af37;
+letter-spacing:8px;
+font-size:14px;
+margin-bottom:20px;
 }
 
-.title{
-font-size:80px;
-margin-top:20px;
-color:#d4af37;
-line-height:1.2;
+.names{
+font-family:'Playfair Display',serif;
+font-size:95px;
+line-height:1.1;
 }
 
 .date{
 margin-top:25px;
-font-size:28px;
-letter-spacing:2px;
+font-size:24px;
+letter-spacing:3px;
 }
 
 .btn{
 margin-top:40px;
-padding:14px 38px;
-border:1px solid #d4af37;
-background:transparent;
-color:#d4af37;
+padding:16px 40px;
+border:none;
 border-radius:50px;
-font-size:18px;
+background:white;
+color:black;
+font-size:16px;
 cursor:pointer;
 transition:.4s;
 }
 
 .btn:hover{
-background:#d4af37;
-color:black;
+transform:translateY(-5px);
 }
 
+/* SECTION */
+
 .section{
-padding:100px 20px;
+padding:120px 20px;
+max-width:1200px;
+margin:auto;
+}
+
+.invitation-box{
+background:white;
+padding:70px 50px;
+border-radius:35px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+text-align:center;
+margin-top:-100px;
+position:relative;
+z-index:5;
+}
+
+.invitation-box h2{
+font-family:'Playfair Display',serif;
+font-size:64px;
+margin-bottom:30px;
+}
+
+.invitation-box p{
+font-size:20px;
+line-height:2;
+color:#666;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+margin-top:80px;
+}
+
+.gallery img{
+width:100%;
+height:650px;
+object-fit:cover;
+border-radius:30px;
+transition:.5s;
+}
+
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+/* TIMER */
+
+.timer-section{
+padding:120px 20px;
 text-align:center;
 }
 
-.section h2{
-font-size:56px;
-color:#d4af37;
-margin-bottom:40px;
+.timer-title{
+font-family:'Playfair Display',serif;
+font-size:70px;
+margin-bottom:50px;
 }
 
 .timer{
@@ -109,67 +235,259 @@ flex-wrap:wrap;
 }
 
 .box{
-width:120px;
-height:120px;
-border:1px solid #d4af37;
-border-radius:24px;
+width:130px;
+height:130px;
+background:white;
+border-radius:30px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .box span{
-font-size:42px;
-color:#d4af37;
+font-size:46px;
+font-weight:600;
+color:var(--gold);
 }
 
 .box p{
 margin-top:10px;
-font-size:18px;
+color:#777;
+}
+
+/* CALENDAR */
+
+.calendar{
+margin-top:100px;
+text-align:center;
+}
+
+.calendar h2{
+font-family:'Playfair Display',serif;
+font-size:60px;
+margin-bottom:40px;
+}
+
+.calendar-table{
+margin:auto;
+border-spacing:10px;
+}
+
+.calendar-table td,
+.calendar-table th{
+width:70px;
+height:70px;
+background:white;
+border-radius:16px;
+font-weight:600;
+}
+
+.highlight{
+background:var(--gold) !important;
+color:white;
+}
+
+/* MAP */
+
+.location{
+padding:120px 20px;
+text-align:center;
+}
+
+.location h2{
+font-family:'Playfair Display',serif;
+font-size:70px;
+margin-bottom:20px;
+}
+
+.location p{
+font-size:20px;
+color:#666;
 }
 
 iframe{
 width:100%;
-height:400px;
+max-width:1100px;
+height:450px;
 border:none;
-border-radius:24px;
-margin-top:40px;
-max-width:1000px;
+border-radius:35px;
+margin-top:50px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-footer{
-padding:50px;
+/* RSVP */
+
+.rsvp{
+margin-top:100px;
+background:white;
+padding:60px 30px;
+border-radius:35px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 text-align:center;
-color:#999;
+}
+
+.rsvp h2{
+font-family:'Playfair Display',serif;
+font-size:60px;
+margin-bottom:40px;
+}
+
+.rsvp input,
+.rsvp select{
+width:280px;
+padding:14px;
+margin:10px;
+border:none;
+background:#f3f3f3;
+border-radius:14px;
+font-size:16px;
+}
+
+.send-btn{
+margin-top:20px;
+padding:14px 34px;
+border:none;
+border-radius:50px;
+background:var(--gold);
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* MUSIC */
+
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:white;
+font-size:22px;
+cursor:pointer;
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+/* FOOTER */
+
+.footer{
+padding:60px 20px;
+text-align:center;
+color:#777;
 font-size:22px;
 }
 
-</style>
+/* MOBILE */
 
+@media(max-width:900px){
+
+.names{
+font-size:58px;
+}
+
+.opening-content h1{
+font-size:58px;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery img{
+height:500px;
+}
+
+.invitation-box h2,
+.timer-title,
+.calendar h2,
+.location h2,
+.rsvp h2{
+font-size:42px;
+}
+
+.box{
+width:100px;
+height:100px;
+}
+
+.box span{
+font-size:34px;
+}
+
+.calendar-table td,
+.calendar-table th{
+width:42px;
+height:42px;
+font-size:12px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- OPENING -->
+
+<div class="opening" id="opening">
+
+<div class="opening-content">
+
+<h1>
+Abdulaziz <br>
+& <br>
+Shahinabonu
+</h1>
+
+<p>
+07 • 08 • 2025
+</p>
+
+<button class="open-btn" onclick="openInvitation()">
+Open Invitation
+</button>
+
+</div>
+
+</div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" id="musicBtn">
+🔇
+</button>
+
+<!-- HERO -->
+
 <section class="hero">
 
-<div class="content">
+<div class="hero-content">
 
 <div class="subtitle">
 WEDDING DAY
 </div>
 
-<div class="title">
+<div class="names">
 Abdulaziz <br>
 & <br>
 Shahinabonu
 </div>
 
 <div class="date">
-07 Avgust 2025 | Royal Hall
+07 August 2025 • Royal Hall
 </div>
 
-<a href="#countdown">
+<a href="#invite">
 <button class="btn">
 Open Invitation
 </button>
@@ -179,9 +497,42 @@ Open Invitation
 
 </section>
 
-<section class="section" id="countdown">
+<!-- INVITATION -->
 
-<h2>To'ygacha Qoldi</h2>
+<section class="section" id="invite">
+
+<div class="invitation-box">
+
+<h2>
+Assalomu Alaykum
+</h2>
+
+<p>
+Sizni nikoh to'yimizning eng baxtli kuniga taklif qilamiz.
+<br><br>
+Azimovlar va Abduraufovlar oilasi.
+</p>
+
+</div>
+
+<!-- GALLERY -->
+
+<div class="gallery">
+
+<img src="photo.jpg">
+<img src="photo2.jpg">
+
+</div>
+
+</section>
+
+<!-- TIMER -->
+
+<section class="timer-section">
+
+<h2 class="timer-title">
+To'ygacha Qoldi
+</h2>
 
 <div class="timer">
 
@@ -207,42 +558,170 @@ Open Invitation
 
 </div>
 
+<!-- CALENDAR -->
+
+<div class="calendar">
+
+<h2>
+August 2025
+</h2>
+
+<table class="calendar-table">
+
+<tr>
+<th>Mo</th>
+<th>Tu</th>
+<th>We</th>
+<th>Th</th>
+<th>Fr</th>
+<th>Sa</th>
+<th>Su</th>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td class="highlight">7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+
+</table>
+
+</div>
+
 </section>
 
-<section class="section">
+<!-- LOCATION -->
 
-<h2>Manzil</h2>
+<section class="location">
 
-<p>Royal Hall — Samarqand</p>
+<h2>
+Manzil
+</h2>
+
+<p>
+Royal Hall — Samarqand
+</p>
 
 <iframe src="https://www.google.com/maps?q=39.64737200258995,66.95507941354002&hl=es;z=15&output=embed"></iframe>
 
+<!-- RSVP -->
+
+<div class="rsvp">
+
+<h2>
+To'yga kelasizmi?
+</h2>
+
+<input type="text" placeholder="Ismingiz">
+
+<br>
+
+<select>
+<option>Kelaman</option>
+<option>Kela olmayman</option>
+</select>
+
+<br>
+
+<button class="send-btn">
+Yuborish
+</button>
+
+</div>
+
 </section>
 
-<footer>
+<!-- FOOTER -->
+
+<div class="footer">
 Abdulaziz & Shahinabonu
-</footer>
+</div>
 
 <script>
 
-const weddingDate = new Date("Aug 7, 2025 19:00:00").getTime();
+/* OPENING */
+
+function openInvitation(){
+
+document.getElementById("opening")
+.classList.add("hide");
+
+bgMusic.play();
+
+musicBtn.textContent = "🔊";
+
+isPlaying = true;
+
+}
+
+/* MUSIC */
+
+const musicBtn =
+document.getElementById('musicBtn');
+
+const bgMusic =
+document.getElementById('bgMusic');
+
+let isPlaying = false;
+
+musicBtn.addEventListener('click', () => {
+
+if(isPlaying){
+
+bgMusic.pause();
+musicBtn.textContent = '🔇';
+
+}else{
+
+bgMusic.play();
+musicBtn.textContent = '🔊';
+
+}
+
+isPlaying = !isPlaying;
+
+});
+
+/* TIMER */
+
+const weddingDate =
+new Date("Aug 7, 2025 19:00:00").getTime();
 
 setInterval(() => {
 
-const now = new Date().getTime();
-const distance = weddingDate - now;
+const now =
+new Date().getTime();
 
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+const distance =
+weddingDate - now;
 
-document.getElementById("days").innerHTML = days;
-document.getElementById("hours").innerHTML = hours;
-document.getElementById("minutes").innerHTML = minutes;
-document.getElementById("seconds").innerHTML = seconds;
+document.getElementById("days").innerHTML =
+Math.floor(distance / (1000 * 60 * 60 * 24));
 
-}, 1000);
+document.getElementById("hours").innerHTML =
+Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+document.getElementById("minutes").innerHTML =
+Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("seconds").innerHTML =
+Math.floor((distance % (1000 * 60)) / 1000);
+
+},1000);
 
 </script>
 
