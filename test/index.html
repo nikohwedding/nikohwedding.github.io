@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asrorbek & Rayhona - To'y Taklifnomasi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Asrorbek & Rayhona - Taklifnoma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #D4AF37;
+            --gold: #C5A059;
             --dark-blue: #1A2A44;
-            --cream: #FFFAF0;
-            --text: #2C3E50;
+            --cream: #FDFBF8;
+            --text: #333;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,300 +18,228 @@
         body {
             background-color: var(--cream);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
             color: var(--text);
+            overflow: hidden; /* Dastlab skrolni yopamiz */
         }
 
-        /* 1. KIRISH QISMI (ANIMATSIYALI) */
+        /* KIRISH EKRANI (OVERLAY) */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--dark-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            color: white;
+            transition: 1.5s ease;
+        }
+
+        #openBtn {
+            padding: 15px 40px;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        #openBtn:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* YURAKCHALAR ANIMATSIYASI */
+        .heart {
+            position: absolute;
+            color: var(--gold);
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 999;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* MUSIQA TUGMASI */
+        .music-control {
+            position: fixed;
+            top: 20px; right: 20px;
+            z-index: 1001;
+            background: rgba(197, 160, 89, 0.8);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* ASOSIY QISMLAR */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(26, 42, 68, 0.9), rgba(26, 42, 68, 0.9)), 
-                        url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            background: linear-gradient(rgba(26, 42, 68, 0.6), rgba(26, 42, 68, 0.7)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
-            position: relative;
             padding: 20px;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 20px; bottom: 20px; left: 20px; right: 20px;
-            border: 2px solid var(--gold);
-            opacity: 0.5;
-        }
-
-        .hero-title {
+        .main-names {
             font-family: 'Great Vibes', cursive;
             font-size: 4rem;
             color: var(--gold);
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease;
-        }
-
-        .hero-sub {
-            font-weight: 300;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            margin-bottom: 40px;
-        }
-
-        /* MUHR (INTERAKTIV) */
-        .seal-container {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .seal-container:hover { transform: scale(1.05); }
-
-        .seal {
-            width: 130px;
-            height: 130px;
-            background: radial-gradient(circle, #f1d38a 0%, #b38f4a 100%);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            border: 3px solid rgba(255,255,255,0.2);
-            position: relative;
-        }
-
-        .seal-text {
-            color: #5d4314;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-align: center;
-        }
-
-        /* 2. ISMLAR VA MATN */
-        .invitation-body {
-            padding: 80px 20px;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .names {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--dark-blue);
-            margin-bottom: 30px;
-        }
-
-        .names span {
-            display: block;
-            font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
-            color: var(--gold);
             margin: 10px 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
-        .main-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-weight: 300;
-            margin-bottom: 50px;
-        }
-
-        /* SANA */
-        .date-box {
-            border-top: 1px solid var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding: 20px 0;
-            margin: 40px 0;
-        }
-
-        .date-number {
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--dark-blue);
-            letter-spacing: 10px;
-        }
-
-        .date-word {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        /* MANZIL */
-        .venue-section {
-            background-color: var(--dark-blue);
-            color: white;
-            padding: 60px 20px;
-            margin-top: 50px;
-        }
-
-        .venue-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .location-text {
-            opacity: 0.9;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .btn-map {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        .btn-map:hover {
-            background-color: var(--gold);
-            color: white;
-        }
-
-        /* TAYMER */
-        .countdown-section {
-            padding: 80px 20px;
-            background-color: var(--cream);
-        }
-
-        .timer {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .time-unit {
-            background: white;
-            padding: 15px 5px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .time-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dark-blue);
-            display: block;
-        }
-
-        .time-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title { font-size: 3rem; }
-            .names { font-size: 2rem; }
-            .date-number { font-size: 2.2rem; }
-        }
+        .wishes-section { padding: 80px 20px; text-align: center; background: white; }
+        .info-container { background-color: var(--dark-blue); color: white; padding: 60px 20px; text-align: center; }
+        .grid-cal { display: grid; grid-template-columns: repeat(7, 1fr); max-width: 300px; margin: 20px auto; gap: 10px; }
+        .cal-num.active { background-color: var(--gold); color: var(--dark-blue); border-radius: 50%; padding: 10px 0; font-weight: bold; }
+        .btn-map { display: inline-block; margin-top: 25px; padding: 15px 35px; background: var(--gold); color: var(--dark-blue); text-decoration: none; border-radius: 50px; font-weight: bold; }
+        .timer-display { display: flex; justify-content: center; gap: 20px; margin: 40px 0; }
+        .t-val { font-size: 2.2rem; font-weight: bold; color: var(--dark-blue); }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="hero-sub">Taklifnoma</div>
-        <h1 class="hero-title">Xush kelibsiz</h1>
-        
-        <div class="seal-container" onclick="document.getElementById('content').scrollIntoView({behavior:'smooth'})">
-            <div class="seal">
-                <div class="seal-text">A & R<br><small>OCHISH</small></div>
-            </div>
-        </div>
-        
-        <div style="margin-top: 40px; font-weight: 300; letter-spacing: 2px;">
-            ASRORBEK & RAYHONA
-        </div>
-    </section>
-
-    <div id="content">
-        <section class="invitation-body">
-            <div class="names">
-                Asrorbek <span>va</span> Rayhona
-            </div>
-            
-            <p class="main-text">
-                Allohning izni ila, oila qurishdek hayajonli lahzalarimizda siz azizlarni yonimizda ko'rishdan behad mamnunmiz. Hayotimizning yangi sahifasi boshlanayotgan quvonchli kunda mehmonimiz bo'ling.
-            </p>
-
-            <div class="date-box">
-                <div class="date-number">07 . 24 . 26</div>
-                <div class="date-word">2026-yil, 24-iyul, Juma</div>
-            </div>
-
-            <p style="font-style: italic; color: #777;">Sizni intiqlik bilan kutib qolamiz!</p>
-        </section>
-
-        <section class="venue-section">
-            <div style="font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 20px;">TANTANA MANZILI</div>
-            <h2 class="venue-name">SHODIYONA</h2>
-            <div style="width: 50px; height: 2px; background: var(--gold); margin: 20px auto;"></div>
-            <p class="location-text">
-                Namangan shahri, (Restoran joylashgan ko'cha nomi)<br>
-                Mo'ljal: Markaziy hudud
-            </p>
-            <a href="https://yandex.uz/maps/10332/namangan/search/Shodiyona%20restorani/" target="_blank" class="btn-map">Xaritadan ko'rish</a>
-        </section>
-
-        <section class="countdown-section">
-            <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem;">To'yimizga qoldi:</h3>
-            <div class="timer" id="timer">
-                <div class="time-unit">
-                    <span class="time-value" id="d">00</span>
-                    <span class="time-label">Kun</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="h">00</span>
-                    <span class="time-label">Soat</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="m">00</span>
-                    <span class="time-label">Daq</span>
-                </div>
-                <div class="time-unit">
-                    <span class="time-value" id="s">00</span>
-                    <span class="time-label">Son</span>
-                </div>
-            </div>
-        </section>
+    <div id="overlay">
+        <div style="font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.9rem; opacity: 0.8;">BISMILLAHIR ROHMANIR ROHIM</div>
+        <h2 style="font-family: 'Great Vibes'; font-size: 3.5rem; color: var(--gold); margin: 20px 0;">Asrorbek & Rayhona</h2>
+        <button id="openBtn" onclick="startInvitation()">TAKILFNOMANI OCHISH</button>
     </div>
 
+    <div class="music-control" id="musicCtrl" onclick="toggleMusic()">🎵</div>
+    <audio id="bgMusic" loop>
+        <source src="Shahzoda - Kuyov va kelinchak.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="heartsContainer"></div>
+
+    <main id="mainContent">
+        <section class="hero">
+            <div style="letter-spacing: 4px; font-family: 'Cinzel';">TAKLIFNOMA</div>
+            <h1 class="main-names">Asrorbek</h1>
+            <div style="font-family: 'Great Vibes'; font-size: 2rem; color: var(--gold);">va</div>
+            <h1 class="main-names">Rayhona</h1>
+            <div style="border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); padding: 10px 20px; margin-top: 20px; font-size: 1.2rem;">
+                24 . 07 . 2026
+            </div>
+        </section>
+
+        <section class="wishes-section">
+            <h2 style="font-family: 'Cinzel'; color: var(--dark-blue); margin-bottom: 25px;">Samimiy tilaklarimiz</h2>
+            <p style="font-style: italic; line-height: 2; max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                "Ikki qalbning birlashishi - dunyodagi eng go'zal mo'jiza. Biz ham hayotimizning ushbu shukuhli lahzalarini siz azizlar bilan birga nishonlashni ixtiyor etdik."
+            </p>
+        </section>
+
+        <section class="info-container">
+            <h3 style="font-family: 'Cinzel'; margin-bottom: 20px;">IYUL 2026</h3>
+            <div class="grid-cal">
+                <div>D</div><div>S</div><div>CH</div><div>P</div><div>J</div><div>SH</div><div>Y</div>
+                <div></div><div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div>
+                <div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
+                <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div>
+                <div>20</div><div>21</div><div>22</div><div>23</div><div class="cal-num active">24</div><div>25</div><div>26</div>
+            </div>
+            <div style="margin-top: 40px;">
+                <div style="font-size: 0.8rem; letter-spacing: 3px; opacity: 0.7;">TANTANA MANZILI</div>
+                <h2 style="font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; margin: 10px 0;">"SHODIYONA"</h2>
+                <p>Namangan shahri, Do'stlik ko'chasi</p>
+                <a href="https://yandex.uz/maps" target="_blank" class="btn-map">XARITANI KO'RISH</a>
+            </div>
+        </section>
+
+        <section style="padding: 80px 20px; text-align: center;">
+            <h2 style="font-family: 'Cinzel'; margin-bottom: 20px;">To'yimizga qoldi:</h2>
+            <div class="timer-display">
+                <div class="t-block"><span class="t-val" id="days">00</span><br><small>KUN</small></div>
+                <div class="t-block"><span class="t-val" id="hours">00</span><br><small>SOAT</small></div>
+                <div class="t-block"><span class="t-val" id="mins">00</span><br><small>DAQIQA</small></div>
+            </div>
+            <p style="font-family: 'Great Vibes'; font-size: 2.5rem; color: var(--gold); margin-top: 40px;">Sizni kutamiz!</p>
+        </section>
+    </main>
+
     <script>
-        // Orqaga hisoblash
-        const wedding = new Date("July 24, 2026 18:00:00").getTime();
+        const audio = document.getElementById('bgMusic');
+        const musicCtrl = document.getElementById('musicCtrl');
 
-        function updateTimer() {
-            const now = new Date().getTime();
-            const diff = wedding - now;
+        function startInvitation() {
+            // 1. Musiqani sozlash va boshlash
+            // AGAR 30-SONIYADAN BOSHLANISHINI XOHLASANGIZ:
+            audio.currentTime = 30; 
+            
+            audio.play().then(() => {
+                musicCtrl.innerText = "⏸";
+            }).catch(e => {
+                console.log("Musiqa fayli topilmadi yoki brauzer blokladi.");
+            });
 
-            if (diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            // 2. Ekranlarni almashtirish
+            document.getElementById('overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                musicCtrl.style.display = 'flex';
+            }, 1500);
+
+            createHearts();
+        }
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicCtrl.innerText = "⏸";
+            } else {
+                audio.pause();
+                musicCtrl.innerText = "🎵";
             }
         }
 
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }, 450);
+        }
+
+        // TAYMER
+        const weddingDate = new Date("July 24, 2026 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            }
+        }, 1000);
     </script>
 </body>
 </html>
